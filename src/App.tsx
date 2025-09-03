@@ -39,7 +39,7 @@ const QuizApp: React.FC = () => {
             setTimeLeft((prev) => (prev > 0 ? prev - 1 : 0));
         }, 1000);
         return () => clearInterval(timer);
-    }, [timeLeft]);
+    }, [timeLeft, handleNextQuestion]);
 
     const handleAnswer = (option: string) => {
         if (option === questions[currentQuestion].answer) {
