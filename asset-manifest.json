@@ -1,0 +1,10 @@
+{
+  "files": {
+    "main.js": "/react-quiz-app/static/js/main.c60c90d0.js",
+    "index.html": "/react-quiz-app/index.html",
+    "main.c60c90d0.js.map": "/react-quiz-app/static/js/main.c60c90d0.js.map"
+  },
+  "entrypoints": [
+    "static/js/main.c60c90d0.js"
+  ]
+}
