@@ -1,13 +1,8 @@
-//App.tsx
+//App.js
 
 import React, { useState, useEffect, useCallback } from "react";
-interface Question {
-    question: string;
-    options: string[];
-    answer: string;
-}
 
-const questions: Question[] = [
+const questions = [
     {
         question: "What is the capital of France?",
         options: ["Berlin", "Madrid", "Paris", "Lisbon"],
@@ -25,11 +20,11 @@ const questions: Question[] = [
     },
 ];
 
-const QuizApp: React.FC = () => {
-    const [currentQuestion, setCurrentQuestion] = useState < number > (0);
-    const [score, setScore] = useState < number > (0);
-    const [showResult, setShowResult] = useState < boolean > (false);
-    const [timeLeft, setTimeLeft] = useState < number > (10);
+const QuizApp = () => {
+    const [currentQuestion, setCurrentQuestion] = useState(0);
+    const [score, setScore] = useState(0);
+    const [showResult, setShowResult] = useState(false);
+    const [timeLeft, setTimeLeft] = useState(10);
 
     const handleNextQuestion = useCallback(() => {
         const nextQuestion = currentQuestion + 1;
@@ -39,7 +34,7 @@ const QuizApp: React.FC = () => {
         } else {
             setShowResult(true);
         }
-    }, [currentQuestion, questions.length]);
+    }, [currentQuestion]);
 
     useEffect(() => {
         if (timeLeft === 0) {
@@ -51,7 +46,7 @@ const QuizApp: React.FC = () => {
         return () => clearInterval(timer);
     }, [timeLeft, handleNextQuestion]);
 
-    const handleAnswer = (option: string) => {
+    const handleAnswer = (option) => {
         if (option === questions[currentQuestion].answer) {
             setScore(score + 1);
         }
@@ -62,7 +57,7 @@ const QuizApp: React.FC = () => {
     const styles = {
         container: {
             display: "flex",
-            flexDirection: "column" as "column",
+            flexDirection: "column",
             alignItems: "center",
             justifyContent: "center",
             minHeight: "100vh",
@@ -77,7 +72,7 @@ const QuizApp: React.FC = () => {
             borderRadius: "20px",
             boxShadow: "0px 10px 20px rgba(0, 0, 0, 0.3)",
             width: "400px",
-            textAlign: "center" as "center",
+            textAlign: "center",
         },
         questionTitle: {
             fontSize: "1.5rem",
@@ -93,7 +88,7 @@ const QuizApp: React.FC = () => {
         },
         optionsContainer: {
             display: "flex",
-            flexDirection: "column" as "column",
+            flexDirection: "column",
             gap: "10px",
         },
         optionButton: {
@@ -110,7 +105,7 @@ const QuizApp: React.FC = () => {
             background: "#3730a3",
         },
         resultContainer: {
-            textAlign: "center" as "center",
+            textAlign: "center",
         },
         restartButton: {
             marginTop: "20px",
@@ -171,4 +166,5 @@ const QuizApp: React.FC = () => {
         </div>
     );
 };
+
 export default QuizApp;
