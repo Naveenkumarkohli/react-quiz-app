@@ -31,6 +31,16 @@ const QuizApp: React.FC = () => {
     const [showResult, setShowResult] = useState < boolean > (false);
     const [timeLeft, setTimeLeft] = useState < number > (10);
 
+    const handleNextQuestion = useCallback(() => {
+        const nextQuestion = currentQuestion + 1;
+        if (nextQuestion < questions.length) {
+            setCurrentQuestion(nextQuestion);
+            setTimeLeft(10);
+        } else {
+            setShowResult(true);
+        }
+    }, [currentQuestion, questions.length]);
+
     useEffect(() => {
         if (timeLeft === 0) {
             handleNextQuestion();
@@ -47,16 +57,6 @@ const QuizApp: React.FC = () => {
         }
         handleNextQuestion();
     };
-
-    const handleNextQuestion = useCallback(() => {
-        const nextQuestion = currentQuestion + 1;
-        if (nextQuestion < questions.length) {
-            setCurrentQuestion(nextQuestion);
-            setTimeLeft(10);
-        } else {
-            setShowResult(true);
-        }
-    }, [currentQuestion, questions.length]);
 
     // Inline Style Objects
     const styles = {
